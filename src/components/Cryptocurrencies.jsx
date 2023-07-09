@@ -19,7 +19,6 @@ const Cryptocurrencies = ({ simplified }) => {
   
 
   
-console.log(cryptos);
 
 if (!cryptos) {
   return null; // Or you can render a loading state or an error message
