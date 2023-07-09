@@ -2,16 +2,26 @@ import React from 'react';
 import { Select, Row, Col, Avatar, Card, Typography } from 'antd';
 import moment from 'moment';
 
-import { useGetCryptoNewsQuery } from '../services/coinnewsApi';
+
+import { useGetCryptoNewsQuery } from '../services/coinNewsApi';
 
 const { Text, Title } = Typography;
 const { Option } = Select;
 
 const News = ({simplified}) => {
-  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 10 : 100});
-  console.log(cryptoNews);
+   const counter = simplified?10:100;
+   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', counter: simplified ? 10 : 100});
+
+   console.log(cryptoNews);
+
+   if(!cryptoNews?.value) return 'Loading...';
+
   return (
-    <div>News</div>
+    <Row gutter={[ 24, 24 ]}>
+      
+       
+
+    </Row>
   )
 }
 
