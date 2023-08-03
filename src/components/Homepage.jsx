@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import millify from 'millify';
 import { Typography, Row, Col, Statistic } from  'antd';
 import { Link } from 'react-router-dom';
 import { useGetCryptosQuery } from '../services/coinrankingApi';
 import { Cryptocurrencies, News } from '../components';
+import { CircularProgress } from '@mui/material';
 
 const { Title } = Typography;
 
@@ -11,7 +12,10 @@ const Homepage = () => {
   const {data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
 
-  if(isFetching) return 'Loading..';
+
+  if(isFetching) return <div style={{height:"100vh", width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+    <CircularProgress/>
+  </div>;
 
   return (
     <>
@@ -42,7 +46,7 @@ const Homepage = () => {
         Top Crypto News
       </Title>
       <Title level={3} className="show-more">
-        <Link to="/news">
+        <Link to="/news" >
         show more
         </Link>
       </Title>

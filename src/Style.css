@@ -297,9 +297,14 @@ padding: 0px 20px;
 .news-image-container{
   display: flex !important;
   justify-content: space-between !important;
+  min-height: 7rem;
 }
 .news-title{
-width: 70%;
+width: 90%;
+font-size: 17px;
+text-decoration: none;
+color: black;
+/* font-weight: 300; */
 }
 
 .news-image-container .img{

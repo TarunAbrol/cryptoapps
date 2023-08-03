@@ -9,25 +9,24 @@ const { Text, Title } = Typography;
 const { Option } = Select;
 
 const News = ({simplified}) => {
-   const counter = simplified?10:100;
-   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', counter: simplified ? 6 : 12});
+  console.log(simplified)
+   const counter = simplified ? 6 : 12;
+   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', counter});
 
-   console.log(cryptoNews);
-
-   if(!cryptoNews?.value) return 'Loading...';
 
 
   return (
     <Row gutter={[ 24, 24 ]}>
-      {cryptoNews.value.map((news, i) => (
-        <Col xs={24} sm={12} lg={8} key={i}>
-          <Card hoverable classname="News-Card"> 
+      {cryptoNews?.value?.map((news, i) => {
+        if(i < counter)
+        return (
+          <Col xs={24} sm={12} lg={8} key={i}>
+          <Card hoverable classname="news-card" > 
           <a href={news.url} target=" blank " rel="noreferrer">
-            <div className="news-image-cont">
-              <Title className="news-title" level={4}>
+            <div className="news-image-container">
+              <p className="news-title" level={4}>
                 {news.name}
-
-              </Title>
+              </p>
 
             </div>
 
@@ -35,8 +34,9 @@ const News = ({simplified}) => {
 
           </Card>
         </Col>
+        )
 
-      ))}
+      })}
       
        
 
